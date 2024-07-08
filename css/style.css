@@ -1,0 +1,61 @@
+body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    background-image: url(../static/rendu-3d-conception-arriere-plan-pour-communications-reseau\ \(1\).jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%
+}
+
+.login {
+    margin-left: 6%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    opacity: 80%;
+    gap: 10%;
+    width: 500px;
+    height: 50%;
+    border-style: groove;
+    border-color: beige;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.377);
+}
+
+label {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-right: 20px;
+    color: rgb(0, 0, 0);
+    opacity: 100%;
+}
+
+.input {
+    margin-right: 10px;
+    opacity: 100%;
+    color: black;
+    /* Permet à l'input de prendre autant d'espace disponible que possible */
+}
+
+.conn {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    opacity: 100%;
+}
+
+.btn {
+    font-size: 130%;
+    font-weight: bolder;
+    padding: 8px;
+    opacity: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.log {
+    font-weight: bolder;
+}

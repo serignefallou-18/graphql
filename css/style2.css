@@ -1,0 +1,80 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    background-image: url("../static/3306567.jpg");
+    background-size: cover;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+#profil {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bolder;
+    gap: 10%;
+    width: max-content;
+    height: max-content;
+    padding: 3%;
+    border-style: groove;
+    border-color: black;
+    background-color: rgba(245, 245, 220, 0.767);
+
+}
+
+span {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    
+}
+
+.btn {
+    font-size: 130%;
+    font-weight: bolder;
+    padding: 8px;
+    opacity: 100%;
+    background-color: beige;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    margin-top: 5%;
+    border-style: groove;
+    border-color: black;
+    border-radius: 8%;
+    background-color: rgba(255, 255, 255, 0.623);
+}
+
+.fp {
+    border-right: 1px solid black; /* Ajouter une bordure à droite */
+    padding-right: 20px; /* Ajouter un espacement entre la bordure et le contenu */
+}
+
+/* Style supplémentaire pour les divs si nécessaire */
+.fp, .xp {
+    flex: 1; /* Permettre aux divs de prendre le même espace disponible */
+    padding: 10px; /* Ajouter un espacement interne */
+    width: 50%;
+}

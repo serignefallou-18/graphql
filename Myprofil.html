@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQl</title>
+    <link rel="stylesheet" type="" href="./css/style2.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <div id="profil">
+                <h1>Information Talent</h1>
+                <div id="login">Login : <span id="username"></span></div>
+                <div id="xp">Xp : <span id="xpUser"></span></div>
+                <div>Grades : <span id="grade"></span></div>
+                <div>Audits : <span id="audit"></span></div>
+            </div>
+            <div id="profil">
+                <h1>Information Personnelle</h1>
+                <div>Prenom : <span id="Prenom"></span></div>
+                <div>Nom : <span id="Nom"></span></div>
+                <div>Age : <span id="Age"></span></div>
+                <div>Email : <span id="Email"></span></div>
+            </div>
+        </nav>
+        <div class="graph">
+            <div class="fp">
+                <h1>Graph Fail/Pass</h1>
+                <svg id="pie-chart" width="300" height="300"></svg>
+            </div>
+            <div class="xp">
+                <h1>Graph XP by project</h1>
+                <svg id="bar-chart" width="400" height="300"></svg>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top:1%;height: max-content;">
+        <button class="btn" onclick="Logout()">Log out</button>
+    </div>
+    <script src="./js/profil.js"></script>
+</body>
+
+</html>
