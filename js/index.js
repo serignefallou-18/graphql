@@ -1,13 +1,16 @@
 var endpointLogin = "https://learn.zone01dakar.sn/api/auth/signin";
+// URL du point de terminaison pour l'authentification
 
 const credentials = {
     username: "",
     password: ""
 };
+// Objet pour stocker les informations d'identification de l'utilisateur
 
 function encodeBase64(str) {
     return btoa(str);
 }
+// Fonction pour encoder une chaîne en base64 en utilisant la méthode btoa
 
 const login = () => {
     // Encodez les informations d'identification en base64
@@ -28,20 +31,26 @@ const login = () => {
         .then(response => {
             if (!response.ok) {
                 throw new Error('Invalid credentials');
+                // Lance une erreur si les identifiants sont invalides
             }
             return response.json();
+            // Convertit la réponse en JSON
         })
         .then(data => {
             if (typeof(data) == "string") {
                 localStorage.setItem("token", data);
+                // Stocke le jeton dans localStorage
                 window.location.href = "Myprofil.html";
+                // Redirige vers la page de profil
             } else {
                 displayError("Your credentials are incorrect");
+                // Affiche un message d'erreur si les identifiants sont incorrects
             }
         })
         .catch(error => {
             console.error('Erreur lors de la requête :', error);
             displayError("An error occurred while trying to log in");
+            // Affiche un message d'erreur en cas d'échec de la requête
         });
 };
 
@@ -50,17 +59,21 @@ function displayError(message) {
     error.textContent = message;
     error.style.color = "red";
 }
+// Fonction pour afficher un message d'erreur
 
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btn");
     if (btn) {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
+            // Empêche le rechargement de la page lors du clic sur le bouton
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
             credentials.username = username;
             credentials.password = password;
             login();
+            // Appelle la fonction login avec les informations d'identification de l'utilisateur
         });
     }
 });
+// Ajoute un gestionnaire d'événements pour le clic sur le bouton de connexion lorsque le DOM est entièrement chargé
