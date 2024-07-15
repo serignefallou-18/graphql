@@ -5,30 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <div>
-            <h1 class="conn">Connexion</h1>
-            <div id="error"></div>
-        </div>
-        <div>
-            <label for="Username" class="log login">Login : </label>
-            <input id="username" type="text" class="input" name="Username" placeholder="Username or Email">
-        </div>
-        <div>
-            <label for="password" class="log">Password : </label>
-            <input id="password" type="password" class="input" name="password" placeholder="Password">
-        </div>
-        <div>
-            <input type="checkbox" id="showPassword"> Show Password
-        </div>
-        <div>
-            <input type="button" id="btn" class="btn" name="connexion" value="Connexion">
+    <div class="wrapper">
+        <div class="container login-box">
+            <form>
+                <h1 class="conn">Connexion</h1>
+                <div id="error"></div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input id="username" type="text" class="input" name="Username" required>
+                    <label for="username" class="log login">Login :</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input id="password" type="password" class="input" name="password" required>
+                    <label for="password" class="log">Password :</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" id="showPassword"> Show Password</label>
+                </div>
+                <div>
+                    <input type="button" id="btn" class="btn" name="connexion" value="Connexion">
+                </div>
+            </form>
         </div>
     </div>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
     <script src="./js/index.js"></script>
 </body>
 
