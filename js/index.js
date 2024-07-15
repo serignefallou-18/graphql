@@ -5,6 +5,7 @@ const credentials = {
     username: "",
     password: ""
 };
+console.log(credentials)
 // Objet pour stocker les informations d'identification de l'utilisateur
 
 function encodeBase64(str) {
@@ -39,6 +40,7 @@ const login = () => {
         .then(data => {
             if (typeof(data) == "string") {
                 localStorage.setItem("token", data);
+                console.log(data)
                 // Stocke le jeton dans localStorage
                 window.location.href = "Myprofil.html";
                 // Redirige vers la page de profil
@@ -75,5 +77,39 @@ document.addEventListener("DOMContentLoaded", () => {
             // Appelle la fonction login avec les informations d'identification de l'utilisateur
         });
     }
+
+    const showPasswordCheckbox = document.getElementById("showPassword");
+    if (showPasswordCheckbox) {
+        showPasswordCheckbox.addEventListener("change", (e) => {
+            const passwordInput = document.getElementById("password");
+            if (e.target.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
+    }
+
+    // Ajoute un gestionnaire d'événements pour détecter la touche "Entrée"
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            // Empêche le rechargement de la page lors de l'appui sur "Entrée"
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            credentials.username = username;
+            credentials.password = password;
+            login();
+            // Appelle la fonction login avec les informations d'identification de l'utilisateur
+        }
+    });
 });
-// Ajoute un gestionnaire d'événements pour le clic sur le bouton de connexion lorsque le DOM est entièrement chargé
+
+function preventBack() {
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function() {
+        window.history.pushState(null, "", window.location.href);
+    };
+}
+
+preventBack();

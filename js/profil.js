@@ -302,6 +302,12 @@ function mouseout(id) {
         label.style.display = "none";
     }
 }
+function preventBack() {
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function() {
+        window.history.pushState(null, "", window.location.href);
+    };
+}
 
 // Fonction pour déconnecter l'utilisateur
 function Logout() {
@@ -311,3 +317,6 @@ function Logout() {
 
 // Appelle la fonction GraphqlData pour récupérer et afficher les données lors du chargement de la page
 GraphqlData();
+
+// Empêche l'utilisateur de revenir en arrière après la connexion
+preventBack();
