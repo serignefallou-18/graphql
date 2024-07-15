@@ -10,35 +10,31 @@
 
 <body>
     <div class="container">
-        <nav>
-            <div id="profil">
+        <button class="btn" onclick="Logout()">Log out</button>
+        <div class="grid">
+            <div id="profil" class="box">
                 <h1>Information Talent</h1>
                 <div id="login">Login : <span id="username"></span></div>
                 <div id="xp">Xp : <span id="xpUser"></span></div>
                 <div>Grades : <span id="grade"></span></div>
                 <div>Audits : <span id="audit"></span></div>
             </div>
-            <div id="profil">
+            <div id="profil" class="box">
                 <h1>Information Personnelle</h1>
                 <div>Prenom : <span id="Prenom"></span></div>
                 <div>Nom : <span id="Nom"></span></div>
                 <div>Age : <span id="Age"></span></div>
                 <div>Email : <span id="Email"></span></div>
             </div>
-        </nav>
-        <div class="graph">
-            <div class="fp">
+            <div class="box">
                 <h1>Graph Fail/Pass</h1>
                 <svg id="pie-chart" width="300" height="300"></svg>
             </div>
-            <div class="xp">
+            <div class="box">
                 <h1>Graph XP by project</h1>
                 <svg id="bar-chart" width="400" height="300"></svg>
             </div>
         </div>
-    </div>
-    <div style="margin-top:1%;height: max-content;">
-        <button class="btn" onclick="Logout()">Log out</button>
     </div>
     <script src="./js/profil.js"></script>
 </body>
