@@ -3,7 +3,7 @@ var endpointGraphql = "https://learn.zone01dakar.sn/api/graphql-engine/v1/graphq
 
 var token = localStorage.getItem("token");
 // Récupère le jeton JWT depuis le localStorage
-if (token == null){
+if (token == null) {
     window.location.href = "index.html";
     // Redirige vers la page de connexion si le jeton n'est pas trouvé
 }
@@ -132,7 +132,7 @@ const GraphqlData = () => {
             let amount = [];
             data.data.transaction.forEach((e) => {
                 let tab = e.path.split("/");
-                if (tab[tab.length - 1] != "piscine-js-2"){
+                if (tab[tab.length - 1] != "piscine-js-2") {
                     amount.push(e.amount);
                     NameProject.push(tab[tab.length - 1]);
                 }
@@ -202,10 +202,10 @@ function drawPieChart(data, cx, cy, radius) {
         let labels = (i == 0) ? "Fail" : "Pass";
         path.id = labels;
         path.setAttribute("fill", getRandomColor());
-        path.addEventListener("mouseover", function() {
+        path.addEventListener("mouseover", function () {
             mouseover(labels);
         });
-        path.addEventListener("mouseout", function() {
+        path.addEventListener("mouseout", function () {
             mouseout(labels);
         });
         document.getElementById("pie-chart").appendChild(path);
@@ -249,10 +249,10 @@ function drawBarChart(data, x, y, width, height) {
         const barHeight = ((item.value / total) * height) * 5;
         const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         bar.id = item.label;
-        bar.addEventListener("mouseover", function() {
+        bar.addEventListener("mouseover", function () {
             mouseOverBar(item.label);
         });
-        bar.addEventListener("mouseout", function() {
+        bar.addEventListener("mouseout", function () {
             mouseout(item.label);
         });
         bar.setAttribute("x", x + index * barWidth);
@@ -304,7 +304,7 @@ function mouseout(id) {
 }
 function preventBack() {
     window.history.pushState(null, "", window.location.href);
-    window.onpopstate = function() {
+    window.onpopstate = function () {
         window.history.pushState(null, "", window.location.href);
     };
 }
