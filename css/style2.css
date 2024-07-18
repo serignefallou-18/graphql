@@ -23,7 +23,7 @@ html {
   background-image: -o-linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
   background-image: linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
    */
-       background-size: cover;
+       /* background-size: cover; */
     color: white;   
   /* animation: animateBg 4s linear infinite; */
 }
@@ -36,12 +36,16 @@ html {
 .welcoming {
   font-family: "Bungee", sans-serif;
   font-size: 42px;
-  place-content: center;
-  place-items: center;
-  text-align: center;
+  display: flex; /* To center the text */
+  align-items: center;
   justify-content: center;
+  text-align: center;
   animation: myAnim 1s ease 0s 1 normal forwards;
-  color: #000;
+  color: #fff; /* Change text color to white for better contrast */
+  background: linear-gradient(to right, #000, #fff); /* Gradient from black to white */
+  border: 1px solid #000;
+  margin-bottom: 50px;
+  padding: 10px; /* Add some padding to make the text more readable */
 }
 
 .container {
@@ -222,7 +226,14 @@ footer {
   }
 }
 
+.xp-information{
+  max-width: 250px;
+  /* border: 2px solid #000; */
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
+}
 .box-project-xp{
   width: 500px;
   border: 4px solid;
