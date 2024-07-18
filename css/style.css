@@ -7,9 +7,46 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-:root {
-  --black-color: #fff;
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
 }
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+      opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+.title-log{
+  font-family: 'Bevan', sans-serif;
+  color: #000;
+  text-shadow: 13px -19px 28px rgba(0,0,0,1);
+  text-shadow: -20px 0px 21px rgba(12,54,236,0.51);
+  
+}
+
+:root {
+  --black-color: #000;
+  --bv-style: 'Bevan', sans-serif;
+  --label-style: 'Alegreya', serif;
+
+}
+
 
 .wrapper {
   display: flex;
@@ -17,11 +54,11 @@
   align-items: center;
   height: 100vh;
   width: 100%;
-  background: url('https://i.pinimg.com/originals/09/05/a7/0905a74092fa43fce6218aa48f6a26a4.jpg') no-repeat;
+  /* background: url('https://i.pinimg.com/originals/09/05/a7/0905a74092fa43fce6218aa48f6a26a4.jpg') no-repeat; */
   background-size: cover;
   background-position: center;
-  background-color: #66fcf1;
-  animation: animateBg 4s linear infinite;
+  /* background-color: #66fcf1; */
+  /* animation: animateBg 4s linear infinite; */
 }
 
 @keyframes animateBg {
@@ -34,19 +71,27 @@
   position: relative;
   width: 400px;
   padding: 30px;
+  height: 500px;
   background: transparent;
-  border-radius: 15px;
-  border: 2px solid rgba(255, 0, 0, 0.349);
+  border-radius: 100% 0% 100% 0% / 0% 85% 15% 100% ;
+  
+  border: 11px ;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 9999;
   flex-direction: column;
-  backdrop-filter: blur(15px);
+  
+box-shadow: -41px -21px 78px 0px rgba(25,59,100,0.54);
+-webkit-box-shadow: -41px -21px 78px 0px rgba(25,59,100,0.54);
+-moz-box-shadow: -41px -21px 78px 0px rgba(25,59,100,0.54);
 }
 
 h1.conn {
+  
   font-size: 2em;
-  color: var(--black-color);
+  /* color: var(--black-color); */
+  font-family: var(--bv-style);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -59,6 +104,7 @@ h1.conn {
 }
 
 .input-box label {
+  font-family: var(--label-style);
   position: absolute;
   top: 50%;
   left: 5px;
@@ -66,7 +112,7 @@ h1.conn {
   font-size: 1em;
   color: var(--black-color);
   pointer-events: none;
-  transition: .5s;
+  transition: top .8s;
 }
 
 .input-box input:focus ~ label,
@@ -75,6 +121,7 @@ h1.conn {
 }
 
 .input-box input {
+  font-family: var(--label-style);
   width: 100%;
   height: 50px;
   background: transparent;
@@ -94,6 +141,7 @@ h1.conn {
 }
 
 .remember-forgot {
+  font-family: var(--label-style);
   margin: -15px 0 15px;
   font-size: .9em;
   color: var(--black-color);
@@ -109,12 +157,12 @@ button,
 input[type="button"] {
   width: 100%;
   height: 40px;
-  background-color: #000;
-  border: 1px dashed aqua;
+  background-color: green;
+  border: 1px dodgerblue aqua;
   border-radius: 40px;
   cursor: pointer;
   font-size: 1em;
-  color: #66fcf1;
+  color: white;
   font-weight: 500;
 }
 
@@ -129,4 +177,116 @@ input[type="button"] {
   .input-box {
     width: 290px;
   }
+}
+
+
+.loader-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /* Initialement caché */
+  z-index: 100000; /* Place le loader au-dessus de tout */
+}
+
+.loader {
+  --cell-size: 20px;
+  --cell-spacing: 1px;
+  --cells: 3;
+  --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
+  display: flex;
+  flex-wrap: wrap;
+  width: var(--total-size);
+  height: var(--total-size);
+}
+
+.cell {
+  flex: 0 0 var(--cell-size);
+  margin: var(--cell-spacing);
+  background-color: transparent;
+  box-sizing: border-box;
+  border-radius: 4px;
+  animation: 1.5s ripple ease infinite;
+}
+
+.cell.d-1 {
+  animation-delay: 100ms;
+}
+
+.cell.d-2 {
+  animation-delay: 200ms;
+}
+
+.cell.d-3 {
+  animation-delay: 300ms;
+}
+
+.cell.d-4 {
+  animation-delay: 400ms;
+}
+
+.cell:nth-child(1) {
+  --cell-color: #0e0e0f;
+}
+
+.cell:nth-child(2) {
+  --cell-color: #0e0e0f;
+}
+
+.cell:nth-child(3) {
+  --cell-color: #0e0e0f;
+}
+
+.cell:nth-child(4) {
+  --cell-color: #b1b3b3;
+}
+
+.cell:nth-child(5) {
+  --cell-color: #b1b3b3;
+}
+
+.cell:nth-child(6) {
+  --cell-color: #b1b3b3;
+}
+
+.cell:nth-child(7) {
+  --cell-color: #0e0e0f;;
+}
+
+.cell:nth-child(8) {
+  --cell-color: #0e0e0f;;
+}
+
+.cell:nth-child(9) {
+  --cell-color:#0e0e0f;
+}
+
+/*Animation*/
+@keyframes ripple {
+  0% {
+    background-color: transparent;
+  }
+
+  30% {
+    background-color: var(--cell-color);
+  }
+
+  60% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couleur de l'overlay */
+  z-index: 9998; /* Juste en dessous du loader */
+  display: none; /* Initialement caché */
 }

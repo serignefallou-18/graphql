@@ -6,37 +6,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GraphQl</title>
     <link rel="stylesheet" type="text/css" href="./css/style2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./js/profil.js" type="module"></script>
 </head>
 
 <body>
-    <div class="container">
-        <button class="btn" onclick="Logout()">Log out</button>
-        <div class="grid">
-            <div id="profil" class="box">
-                <h1>Information Talent</h1>
-                <div id="login">Login : <span id="username"></span></div>
-                <div id="xp">Xp : <span id="xpUser"></span></div>
-                <div>Grades : <span id="grade"></span></div>
-                <div>Audits : <span id="audit"></span></div>
-            </div>
-            <div id="profil" class="box">
-                <h1>Information Personnelle</h1>
-                <div>Prenom : <span id="Prenom"></span></div>
-                <div>Nom : <span id="Nom"></span></div>
-                <div>Age : <span id="Age"></span></div>
-                <div>Email : <span id="Email"></span></div>
-            </div>
-            <div class="box">
-                <h1>Graph Fail/Pass</h1>
-                <svg id="pie-chart" width="300" height="300"></svg>
-            </div>
-            <div class="box">
-                <h1>Graph XP by project</h1>
-                <svg id="bar-chart" width="400" height="300"></svg>
+    <button id="logout" class="btn">Log out</button>
+    <div class="welcoming" >
+        welcome to your dashboard check dear
+        <div id="login"><span id="username"></span></div>
+
+    </div>
+    <div class="xp-information">
+
+        <div class="section">
+            You have 
+            <div id="xp"><span id="xpUser"></span></div>
+        </div>
+    </div>
+
+    <div class="level-information">
+
+        <div class="section">
+            Grades : 
+            <div><span id="grade"></span></div>
+        </div>
+    </div>
+
+    <div class="audit-container">
+        <div class="section">
+            <div class="content">
+                Audits: 
+                <div><span id="audit"></span></div>
             </div>
         </div>
     </div>
-    <script src="./js/profil.js"></script>
+    
+
+    
+ 
+        <div class="box-audit-ratio">
+            <h1>Graph Fail/Pass</h1>
+            <svg id="pie-chart" width="300" height="300"></svg>
+        </div>
+
+        <div class="tag-container">
+
+            <div class="tags">
+                <h3>About Me</h3>
+                <div>
+    
+                    <span>Prénom : <span id="Prenom">Serigne</span></span>
+                </div>
+                <div>
+    
+                    <span>Nom : <span id="Nom">fallou</span></span>
+                </div>
+                <div>
+    
+                    <span>Âge : <span id="Age">31 ans</span></span>
+                </div>
+                <span>Email : <span id="Email">dia.serignfalou@gmail.com</span></span>
+            </div>
+        </div>
+
+        <div class="bar">
+
+            <div class="box-project-xp">
+                <svg id="bar-chart" width="400" height="300"></svg>
+                <h1>Graph XP by project</h1>
+            </div>
+        </div>
+            <!-- <div class="grid">
+                <div id="profil" class="box">
+                    <!-- <h1>Information Talent</h1> -->
+                <!-- </div> -->
+                
+            
+    
+    <footer>
+        <div class="about-me">
+           
+        </div>
+        
+        <div class="copyright">
+            &copy; <span>2024</span> Your Name. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a>
+        </div>
+    </footer>
+    
 </body>
 
 </html>

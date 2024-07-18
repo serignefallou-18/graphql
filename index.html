@@ -6,13 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    <script src="./js/index.js" type="module"></script>
+
 </head>
 
-<body>
+<body  class="fade-in">
+    <div class="overlay" id="overlay"></div> <!-- Overlay pour griser l'arrière-plan -->
+
     <div class="wrapper">
         <div class="container login-box">
+            <div class="title-log">
+
+                <h1 class="conn">01-GraphQl</h1>
+            </div>
             <form>
-                <h1 class="conn">Connexion</h1>
                 <div id="error"></div>
                 <div class="input-box">
                     <span class="icon">
@@ -37,8 +49,27 @@
             </form>
         </div>
     </div>
-    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
-    <script src="./js/index.js"></script>
+    <div id="loaderContainer" class="loader-container">
+        <div class="loader">
+            <div class="cell d-0"></div>
+            <div class="cell d-1"></div>
+            <div class="cell d-2"></div>
+          
+            <div class="cell d-1"></div>
+            <div class="cell d-2"></div>
+            
+            
+            <div class="cell d-2"></div>
+            <div class="cell d-3"></div>
+            
+            
+            <div class="cell d-3"></div>
+            <div class="cell d-4"></div>
+            
+            
+          </div>
+    </div>
+    
 </body>
 
 </html>

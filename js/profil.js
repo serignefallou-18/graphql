@@ -16,6 +16,7 @@ query {
         login,
         profile,
         attrs
+        email
     }
     transaction(where: {type: {_eq: "xp"}, eventId:{_eq:56}, path:{_nlike:"/dakar/div-01/checkpoint/%"}},order_by:{createdAt:asc}) {
         id,
@@ -68,7 +69,8 @@ const ConvertXp = (xp) => {
     } else if (xp < 1000000) {
         return (Math.round(xp * 0.001)).toString() + "KB";
     } else {
-        return (Math.round(xp * 0.0001)).toString() + "MB";
+        var temp = xp / 1000000
+        return temp.toFixed(2).toString() + "MB";
     }
 }
 
@@ -94,6 +96,18 @@ const changeToPourcent = (tab) => {
         newTab.push((Math.round(e) / total) * 100);
     });
     return newTab;
+}
+
+const getAgeFromBirthDate = (birthDateString) => {
+    let birthDate = new Date(birthDateString);
+    let today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let monthDifference = today.getMonth() - birthDate.getMonth();
+    // Vérifier si l'anniversaire est passé cette année
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
 }
 
 const GraphqlData = () => {
@@ -150,7 +164,7 @@ const GraphqlData = () => {
             });
 
             // Dessine le diagramme en barres
-            drawBarChart(datas, 50, 100, 250, 100);
+            drawBarChart(datas, 0, 0, 400, 400);
 
             // Met à jour l'interface utilisateur avec les informations utilisateur
             let profile = document.getElementById("username");
@@ -170,7 +184,7 @@ const GraphqlData = () => {
             let email = document.getElementById("Email");
             prenom.textContent = data.data.user[0].attrs.firstName;
             nom.textContent = data.data.user[0].attrs.lastName;
-            age.textContent = data.data.user[0].attrs.age;
+            age.textContent = getAgeFromBirthDate(data.data.user[0].attrs.dateOfBirth);
             email.textContent = data.data.user[0].attrs.email;
         })
         .catch(error => {
@@ -242,36 +256,60 @@ function getRandomColor() {
 
 // Fonction pour dessiner le diagramme en barres
 function drawBarChart(data, x, y, width, height) {
-    const total = data.reduce((acc, item) => acc + item.value, 0);
-    const barWidth = (width / data.length);
+    // Clear the previous chart if any
+    d3.select("#bar-chart").selectAll("*").remove();
 
-    data.forEach((item, index) => {
-        const barHeight = ((item.value / total) * height) * 5;
-        const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        bar.id = item.label;
-        bar.addEventListener("mouseover", function () {
-            mouseOverBar(item.label);
-        });
-        bar.addEventListener("mouseout", function () {
-            mouseout(item.label);
-        });
-        bar.setAttribute("x", x + index * barWidth);
-        bar.setAttribute("y", y + (height - barHeight));
-        bar.setAttribute("width", barWidth);
-        bar.setAttribute("height", barHeight);
-        bar.setAttribute("fill", getRandomColor());
-        document.getElementById("bar-chart").appendChild(bar);
+    const svg = d3.select("#bar-chart")
+                  .attr("width", width)
+                  .attr("height", height);
 
-        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        label.setAttribute("x", x + index * barWidth + barWidth / 2);
-        label.setAttribute("y", y + (height - barHeight) - 5);
-        label.setAttribute("text-anchor", "middle");
-        label.id = "label" + item.label;
-        label.textContent = item.label + " " + item.xp;
-        label.style = "font-size:3px; display:none";
-        document.getElementById("bar-chart").appendChild(label);
-    });
+    const total = d3.sum(data, d => d.value);
+    const barWidth = width / data.length;
+
+    // Create the x and y scales
+    const xScale = d3.scaleBand()
+                     .domain(data.map(d => d.label))
+                     .range([0, width])
+                     .padding(0.05);
+
+    const yScale = d3.scaleLinear()
+                     .domain([0, d3.max(data, d => d.value)])
+                     .nice()
+                     .range([height, 0]);
+
+    // Create the bars
+    svg.selectAll(".bar")
+       .data(data)
+       .enter()
+       .append("rect")
+       .attr("class", "bar")
+       .attr("x", d => xScale(d.label))
+       .attr("y", d => yScale(d.value))
+       .attr("width", xScale.bandwidth())
+       .attr("height", d => height - yScale(d.value))
+       .attr("fill", getRandomColor())
+       .on("mouseover", function(event, d) {
+           d3.select("#label" + d.label).style("display", "block");
+       })
+       .on("mouseout", function(event, d) {
+           d3.select("#label" + d.label).style("display", "none");
+       });
+
+    // Add labels
+    svg.selectAll(".label")
+       .data(data)
+       .enter()
+       .append("text")
+       .attr("class", "label")
+       .attr("id", d => "label" + d.label)
+       .attr("x", d => xScale(d.label) + xScale.bandwidth() / 2)
+       .attr("y", d => yScale(d.value) - 10)
+    //    .attr("text-anchor", "middle")
+       .text(d => d.label + " " + d.xp)
+       .style("font-size", "12px")
+       .style("display", "none");
 }
+
 
 // Fonction pour afficher un label lors du survol d'une portion du diagramme
 function mouseover(id) {
@@ -315,8 +353,17 @@ function Logout() {
     window.location.href = "index.html";
 }
 
-// Appelle la fonction GraphqlData pour récupérer et afficher les données lors du chargement de la page
-GraphqlData();
 
-// Empêche l'utilisateur de revenir en arrière après la connexion
-preventBack();
+document.addEventListener("DOMContentLoaded",()=>{
+
+    // Appelle la fonction GraphqlData pour récupérer et afficher les données lors du chargement de la page
+    GraphqlData();
+    
+    // Empêche l'utilisateur de revenir en arrière après la connexion
+    preventBack();
+
+    const dec=document.getElementById("logout")
+    if (dec){
+        dec.addEventListener("click",Logout)
+    }
+})

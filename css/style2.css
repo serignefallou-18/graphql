@@ -1,19 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-body, html {
+:root {
+  --wlc-style: "Bungee", sans-serif;
+}
+
+body,
+html {
   height: 100%;
-  overflow: hidden; /* Enable scrolling */
-  background: url('https://i.pinimg.com/originals/09/05/a7/0905a74092fa43fce6218aa48f6a26a4.jpg') no-repeat center center fixed;
-  background-size: cover;
-  animation: animateBg 4s linear infinite;
-  color: #fff;
+  /* Enable scrolling */
+  /* background: url('https://i.pinimg.com/originals/09/05/a7/0905a74092fa43fce6218aa48f6a26a4.jpg') no-repeat center center fixed; */
+  /* background: linear-gradient(135deg, #1DA1F2, rgba(34, 34, 34, 0.7)) no-repeat center center fixed; */
+  /* background: linear-gradient(10deg, rgba(0, 0, 0, 0.7), rgba(34, 34, 34, 0.7)) no-repeat center center fixed; */
+  /* background-image: -webkit-linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
+  background-image: -moz-linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
+  background-image: -o-linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
+  background-image: linear-gradient(0deg, #1b1212 0%, #1b1212 100%);
+   */
+       background-size: cover;
+    color: white;   
+  /* animation: animateBg 4s linear infinite; */
 }
 
 @keyframes animateBg {
@@ -21,35 +33,167 @@ body, html {
     filter: hue-rotate(360deg);
   }
 }
+.welcoming {
+  font-family: "Bungee", sans-serif;
+  font-size: 42px;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  justify-content: center;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+  color: #000;
+}
 
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 20px;
   height: 100%;
+  flex-wrap: wrap;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.5fr 1fr;
-  gap: 20px;
-  width: 100%;
-  max-width: 1200px;
-}
 
-.box {
-  background: rgba(227, 139, 139, 0.5);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-radius: 10px;
-  overflow: auto; /* Enable scrolling within each box if needed */
-}
 
-h1 {
-  font-size: 1.5em;
+.section {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #000;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
   margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: var(--wlc-style);
+  font-size: 26px;
+  backdrop-filter: blur(10px); /* Ajouter un flou d'arrière-plan */
+  opacity: 0; /* Commence invisible */
+  animation: fadeIn 5s ease-in-out forwards; /* Animation d'apparition */
+  
+  /* background-color: #000; */
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px); /* Départ légèrement en dessous */
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0); /* Arrivée à la position initiale */
+  }
+}
+
+
+/* Ajouter un délai à chaque section pour qu'elles apparaissent une par une */
+.section:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.section:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.section:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.section:nth-child(4) {
+  animation-delay: 2s;
+}
+
+
+
+.section h2 {
+  color: #1da1f2;
+  margin-bottom: 10px;
+  
+ 
+
+}
+.section .content {
+  margin-top: 10px;
+}
+
+.level-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.audit-information {
+  width: 100%;
+            display: flex;
+            justify-content: flex-end;
+}
+
+
+.audit-container {
+
+  display: flex;
+  justify-content: flex-end;
+}
+.audit-information {
+  margin: 20px;
+
+  
+ 
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+  display: flex;
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+
+  padding: 10px;
+  text-align: center;
+  z-index: 1000; /* Assurez-vous que le footer est au-dessus du contenu si nécessaire */
+}
+.about-me {
+  border-top: 1px solid #34495e;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+.about-me h3 {
+  margin-bottom: 10px;
+  color: #3498db;
+}
+.about-me span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.tags {
+  margin-top: 20px;
+}
+.tags a {
+  color: #bdc3c7;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+.tags a:hover {
+  color: #ecf0f1;
+}
+.copyright {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #bdc3c7;
+}
+.copyright span {
+  color: #ecf0f1;
+  font-weight: bold;
 }
 
 .btn {
@@ -70,17 +214,58 @@ h1 {
 }
 
 /* Styles for SVG elements */
-.fp, .xp {
-  position: relative;
-}
-
-.fp:hover text, .xp:hover text {
-  fill: #fff; /* Change text color to white on hover */
-}
 
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+}
+
+
+.box-project-xp{
+  width: 500px;
+  border: 4px solid;
+  text-align: center;
+  justify-content: end;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+-webkit-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+-moz-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+}
+
+.bar{
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer{
+  display: none;
+}
+.tag-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  
+}
+.tags{
+  max-width: 400px;
+  display: block;
+  font-family: var(--wlc-style);
+  max-width: 500px;
+  color: #000;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.box-audit-ratio{
+  box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+-webkit-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+-moz-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
+max-width: 100px;
 }
