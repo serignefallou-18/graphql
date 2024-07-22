@@ -1,102 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GraphQl</title>
-    <link rel="stylesheet" type="text/css" href="./css/style2.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style2.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./js/profil.js" type="module"></script>
-</head>
+  </head>
 
-<body>
-    <button id="logout" class="btn">Log out</button>
-    <div class="welcoming" >
-        welcome to your dashboard
-        <div id="login"> <span id="username"></span></div>
-
+  <body>
+    <div class="navbar">
+      <div class="cover">
+        <button id="logout" class="Btn">
+  
+            <div  class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+            
+            <div class="text">Logout</div>
+          </button>
+          
+      </div>
+      <div class="user-info">
+        <img src="img/black-guy.png" alt="User Avatar" class="avatar" />
+        <span class="user-name"> <span id="Prenom">Serigne</span></span>
+      </div>
     </div>
-    <div class="xp-information">
 
-        <div class="section">
-            You have 
-            <div id="xp"><span id="xpUser"></span></div>
+    <div class="tags">
+        
+      <div class="about">
+        <h3>About Me</h3>
+        <div>
+          <div id="pseudo"><span id="username"></span></div>
         </div>
-    </div>
-
-    <div class="level-information">
-
-        <div class="section">
-            Grades : 
-            <div><span id="grade"></span></div>
+        <div>
+          <span>Nom : <span id="Nom">fallou</span></span>
         </div>
-    </div>
-
-    <div class="audit-container">
-        <div class="section">
-            <div class="content">
-                Audits: 
-                <div><span id="audit"></span></div>
-            </div>
+        <div>
+          <span>Âge : <span id="Age">31 ans</span></span>
         </div>
-    </div>
-    
+        <span>Email : <span id="Email">dia.serignfalou@gmail.com</span></span>
+      </div>
+      
 
-    
- 
-        <div class="box-audit-ratio">
-            <h1>Graph Fail/Pass</h1>
+      <div class="xp-information">
+        <div class="section">
+          You have
+          <div id="xp"><span id="xpUser"></span></div>
+        </div>
+      </div>
+
+     
+      <div class="level-information">
+        <div class="section">
+          Level :
+          <div><span id="grade"></span></div>
+        </div>
+      </div>
+     
+      <div class="audit-container">
+        <div class="section">
+          <div class="content">
+            Audits:
+            <div><span id="audit"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="diagram">
+
+        <div class="box-audit-ratio1">
             <svg id="pie-chart" width="300" height="300"></svg>
+            <h1>Graph Fail/Pass</h1>
+        
         </div>
-
-        <div class="tag-container">
-
-            <div class="tags">
-                <h3>About Me</h3>
-                <div>
-    
-                    <span>Prénom : <span id="Prenom">Serigne</span></span>
-                </div>
-                <div>
-    
-                    <span>Nom : <span id="Nom">fallou</span></span>
-                </div>
-                <div>
-    
-                    <span>Âge : <span id="Age">31 ans</span></span>
-                </div>
-                <span>Email : <span id="Email">dia.serignfalou@gmail.com</span></span>
-            </div>
+        <div class="separator">
         </div>
-
-        <div class="bar">
-
-            <div class="box-project-xp">
-                <svg id="bar-chart" width="400" height="300"></svg>
-                <h1>Graph XP by project</h1>
-            </div>
+        <div class="box-project-xp">
+          <svg id="bar-chart" width="400" height="300"></svg>
+          <h1>Graph XP by project</h1>
         </div>
-            <!-- <div class="grid">
+    </div>
+    
+       
+    </div>
+
+    <!-- <div class="grid">
                 <div id="profil" class="box">
                     <!-- <h1>Information Talent</h1> -->
-                <!-- </div> -->
-                
-            
-    
-    <footer>
-        <div class="about-me">
-           
-        </div>
-        
-        <div class="copyright">
-            &copy; <span>2024</span> Your Name. Tous droits réservés. | <a href="#">Politique de confidentialité</a> | <a href="#">Conditions d'utilisation</a>
-        </div>
-    </footer>
-    
-</body>
-
+    <!-- </div> -->
+  </body>
 </html>
