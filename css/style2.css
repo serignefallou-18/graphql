@@ -148,9 +148,10 @@ html {
   justify-content: space-around;
   background-color: #6a86da;
   align-items: center; /* Center items vertically */
-  height: 500px; /* Set a height for the container */
+  height: 800px; /* Set a height for the container */
   border-radius: 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: center;
 
 }
 
@@ -161,7 +162,7 @@ html {
 }
 
 .separator {
-  width: 200px; /* Adjust the width as needed */
+  width: 50px; /* Adjust the width as needed */
   height: 100%; /* Make sure the separator spans the full height */
   background-color: white; /* White background for the separator */
   border-radius: 20px;
@@ -271,15 +272,12 @@ html {
  
 }
 .box-project-xp{
-  width: 100%;
+
   /* border: 4px solid; */
   text-align: center;
   justify-content: end;
-  margin-right: 50px;
-  margin-bottom: 50px;
-  /* box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36); */
-/* -webkit-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36);
--moz-box-shadow: -108px -37px 122px -7px rgba(0,0,0,0.36); */
+  right: 0;
+  /* margin-bottom: 50px; */
   margin-left: 10px;
 }
 
@@ -335,6 +333,7 @@ footer{
   height: 100px;
   background-color: #6a86da;
   position: relative;
+  
  
 }
 
@@ -463,6 +462,7 @@ footer{
 
   .diagram {
     flex-direction: column;
+    background-color: #1da1f2;
     height: auto;
     padding: 20px;
   }
